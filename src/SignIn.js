@@ -13,27 +13,9 @@ function SignIn() {
   }, []);
 
   const fetchQuotes = async () => {
-
     const data = await axios.get("https://api.kanye.rest");
     console.log(data)
-    console.log(data.data.quote)
     setQuotes(data.data.quote)
-
-  //   try {
-  //     const res = await axios.get(
-  //       'https://quotes15.p.rapidapi.com/quotes/random/',
-  //       {
-  //         headers: {
-  //           'X-RapidAPI-Key': '49b47d6e86msh4f6eb3519b50dd3p179658jsn872092bb3037',
-  //           'X-RapidAPI-Host': 'quotes15.p.rapidapi.com'
-  //         },
-  //         params: { category: 'all', count: '1' },
-  //       }
-  //     )
-  //     setQuotes(res.data)
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
   };
 
   const handleSubmit = (e) => {
@@ -45,8 +27,10 @@ function SignIn() {
   return (
     <main>
       {quotes && modal ? (
-            <p className="flex items-center justify-center bg-primary h-screen text-ash text-sm">  Hi, {name}, did you know that...{quotes}</p>
-        
+  <p className="flex items-center justify-center bg-primary h-screen text-ash text-sm">
+  {" "}
+  Hi, {name}, did you know that...{quotes}
+</p>        
       ) : (
         <section className="flex lg:justify-around flex-col lg:flex-row">
           <section className="flex flex-col lg:flex-row justify-around bg-primary lg:mt-10 rounded-2xl rounded-r-xl pr-6 pb-14 pt-14 pl-10">

@@ -15,22 +15,8 @@ function SignUp() {
 
   const fetchData = async()=>{
     const data = await axios.get("https://api.kanye.rest");
-    console.log(data)
     setQuotes(data.data.quote)
   }
-
-//   const fetchQuotes =() => {
-//     fetch("https://api.kanye.rest")
-//      .then((response)=>{
-//         return response.json()
-//      })
-//      .then((data)=>{
-//         setQuotes(data);
-//      })
-//      .catch((err)=>{
-//       console.log(err);
-//     })
-//   };
 
  const handleSubmit = (e) => {
   e.preventDefault();
@@ -43,7 +29,7 @@ function SignUp() {
       {quotes && modal ? (
         <p className="flex items-center justify-center bg-primary h-screen text-ash text-sm">
           {" "}
-          Hi, {name}, did you know that...{quotes}
+          Hi, {name}, did you know that...{quotes} 
         </p>
       ) : (
         <section className="flex lg:justify-around flex-col lg:flex-row">
