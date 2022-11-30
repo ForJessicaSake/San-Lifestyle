@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Lady from "./Images/lady.png";
-import axios from "axios";
+import axios from 'axios';
+
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -9,31 +10,31 @@ function SignUp() {
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
-    fetchQuotes();
+    fetchData();
   }, []);
 
-  const fetchQuotes = async () => {
-    try {
-      const res = await axios.get(
-        "https://quotes15.p.rapidapi.com/quotes/random/",
-        {
-          headers: {
-            "X-RapidAPI-Key":
-              "49b47d6e86msh4f6eb3519b50dd3p179658jsn872092bb3037",
-            "X-RapidAPI-Host": "quotes15.p.rapidapi.com",
-          },
-          params: { category: "all", count: "1" },
-        }
-      );
-      setQuotes(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const fetchData = async()=>{
+    const data = await axios.get("https://api.kanye.rest");
+    console.log(data)
+    setQuotes(data.data.quote)
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetchQuotes();
+//   const fetchQuotes =() => {
+//     fetch("https://api.kanye.rest")
+//      .then((response)=>{
+//         return response.json()
+//      })
+//      .then((data)=>{
+//         setQuotes(data);
+//      })
+//      .catch((err)=>{
+//       console.log(err);
+//     })
+//   };
+
+ const handleSubmit = (e) => {
+  e.preventDefault();
+    fetchData();
     setModal(true);
   };
 
@@ -42,7 +43,7 @@ function SignUp() {
       {quotes && modal ? (
         <p className="flex items-center justify-center bg-primary h-screen text-ash text-sm">
           {" "}
-          Hi, {name}, did you know that...{quotes.text}
+          Hi, {name}, did you know that...{quotes}
         </p>
       ) : (
         <section className="flex lg:justify-around flex-col lg:flex-row">
