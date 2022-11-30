@@ -10,7 +10,7 @@ function SignIn() {
 
   useEffect(() => {
     fetchQuotes()
-  }, []);
+  }, [name]);
 
   const fetchQuotes = async () => {
     const data = await axios.get("https://api.kanye.rest");
@@ -45,6 +45,7 @@ function SignIn() {
               <h2 className="text-5xl text-amber-600 font-extrabold text-center lg:text-start mb-8">
                 You
               </h2>
+              <p className="text-ash w-80 text-sm">{quotes}</p>
             </hgroup>
             <img src={Lady} alt="lady" className="lg:w-96" />
           </section>
